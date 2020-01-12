@@ -1,4 +1,4 @@
-# 设置 Python
+# Python 安装
 
 ## Python 语言环境集成开发环境
 

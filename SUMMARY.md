@@ -1,8 +1,8 @@
 # Table of contents
 
 * [Python 全栈 + AI 人工智能 + 大数据分析](README.md)
-* [介绍 Python](02_introduction_python/README.md)
-* [设置 Python](03_setup_python.md)
+* [Python 介绍](02_introduction_python.md)
+* [Python 安装](03_setup_python.md)
 * [Django](20_django/README.md)
 * [变量](04_variables/README.md)
 * [数据类型](07_datatype/README.md)
