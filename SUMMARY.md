@@ -22,6 +22,5 @@
 * [Pycharam](19_pycharm.md)
 * [Django](20_django.md)
 * [数据结构](21_data_structure.md)
-* [resource](resource/README.md)
-  * [全网最新可用接码打码接码平台](resource/quan-wang-zui-xin-ke-yong-jie-ma-da-ma-jie-ma-ping-tai.md)
+* [全网最新可用接码打码接码平台](quan-wang-zui-xin-ke-yong-jie-ma-da-ma-jie-ma-ping-tai.md)
 
