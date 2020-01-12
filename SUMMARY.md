@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Python 全栈 + AI 人工智能 + 大数据分析](README.md)
+* [介绍 Python](02_introduction_python.md)
 * [Setup Python](03_setup_python/README.md)
 * [Django](20_django/README.md)
 * [变量](04_variables/README.md)
@@ -10,7 +11,6 @@
 * [装饰器](14_decorator/README.md)
 * [创建可执行文件](17_gui/README.md)
 * [网络编程 \_ 概念](16_net/README.md)
-* [Introduction Python](02_introduction_python/README.md)
 * [resource](resource/README.md)
   * [全网最新可用接码打码接码平台](resource/全网最新可用接码打码接码平台.md)
 * [模块](10_module/README.md)
