@@ -27,15 +27,15 @@
 * 0[9-模块](https://hezhiqiang8909.gitbook.io/python-ai/10_module)
 * [10-字符集](10_charset.md)
 * [11-面向对象](11_oop.md)
-* [12-生成器](13_generator.md)
-* [13-装饰器](14_decorator.md)
+* [12-生成器](12_generator.md)
+* [13-装饰器](12_decorator.md)
 * [14-进程](https://hezhiqiang8909.gitbook.io/python-ai/reamd)
-* [15-net](16_net.md)
-* [16-gui](17_gui.md)
-* [17-正则表达式](18_regular_expression.md)
-* [18-pycharm](19_pycharm.md)
-* [19-django](20_django.md)
-* [20-数据结构](21_data_structure.md)
+* [15-net](14_net.md)
+* [16-gui](15_gui.md)
+* [17-正则表达式](16_regular_expression.md)
+* [18-pycharm](17_pycharm.md)
+* [19-django](18_django.md)
+* [20-数据结构](19_data_structure.md)
 
 ## 爬虫
 
