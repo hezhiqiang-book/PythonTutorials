@@ -8,7 +8,7 @@
 
 Unicode源于一个很简单的想法：将全世界所有的字符包含在一个集合里，计算机只要支持这一个字符集，就能显示所有的字符，再也不会有乱码了。
 
-```text
+```unicode
 U+0000 = null
 ```
 
@@ -16,15 +16,15 @@ U+表示紧跟在后面的十六进制数是Unicode的码点
 
 ### [Unicode](http://www.unicode.org/) 编号规则
 
-![Unicode](../.gitbook/assets/unicodev1.png)
+![Unicode](./images/unicodev1.png)
 
 1. 从 0 开始编号 U+0000 = null
 2. 最新[Unicode@11.0.0](http://www.unicode.org/versions/Unicode11.0.0/)
 3. 共计137,374个符号，包含CJK字符74500个（68%）
-4. 2^16\(65535\)个号码组成一个平面
+4. 2^16(65535)个号码组成一个平面
 5. 目前有17个平面，整个空间大小：2^21
-6. 1个基本平面\(BMP\)：U+0000 ~ U+FFFF
-7. 16个辅助平面\(SMP\): U+010000 ~ U+10FFFF
+6. 1个基本平面(BMP)：U+0000 ~ U+FFFF
+7. 16个辅助平面(SMP): U+010000 ~ U+10FFFF
 
 中日韩文字为74500个。可以近似认为，全世界现有的符号当中，三分之二以上来自东亚文字。比如，中文"好"的码点是十六进制的`597D`
 
@@ -34,7 +34,7 @@ U+表示紧跟在后面的十六进制数是Unicode的码点
 
 > 这么多符号，Unicode不是一次性定义的，而是分区定义。每个区可以存放65536个（216）字符，称为一个平面（plane）。目前，一共有17个（25）平面，也就是说，整个Unicode字符集的大小现在是221。
 
-![Unicode](https://github.com/hezhiqiang-book/PythonTutorials/tree/b50e7e0c9dc8fb4ea2264f85fcb278eda9b5404f/09_file/images/unicodev2.png)
+![Unicode](./images/unicodev2.png)
 
 最前面的65536个字符位，称为基本平面（缩写**BMP**），它的码点范围是从0一直到`(2^16)-1`，写成16进制就是从`U+0000`到`U+FFFF`。所有最常见的字符都放在这个平面，这是Unicode最先定义和公布的一个平面。
 
@@ -46,18 +46,18 @@ Unicode只规定了**每个字符的码点**，到底用什么样的**字节序*
 
 最直观的编码方法是，**每个码点**使用**四个字节**表示，**字节内容一一对应码点**。这种编码方法就叫做**UTF-32**。比如，**码点0**就用**四个字节的0**表示，**码点597D**就在前面加两个字节的0。
 
-```text
+```unicode<->utf-32
 U+0000 = 0x0000 0000
 U+597D = 0x0000 597D
 ```
 
 ### UTF-32 编码
 
-![utf-32](../.gitbook/assets/utf-32.png)
+![utf-32](./images/utf-32.png)
 
 1. 4个字节表示一个字符
 2. 完全对应 Unicode 编码（比如：字母`a`=`0x00000061`）
-3. Pro: 查找效率高，时间复杂度o\(1\)
+3. Pro: 查找效率高，时间复杂度o(1)
 4. Con: 浪费空间。比相同 ASCII 编码文件大4倍
 
 UTF-32的优点在于，转换规则简单直观，查找效率高。缺点在于浪费空间，同样内容的英语文本，它会比ASCII编码大四倍。这个缺点很致命，导致实际上没有人使用这种编码方法，HTML 5标准就明文规定，网页不得编码成UTF-32。
@@ -66,11 +66,24 @@ UTF-32的优点在于，转换规则简单直观，查找效率高。缺点在�
 
 人们真正需要的是一种节省空间的编码方法，这导致了UTF-8的诞生。**UTF-8是一种变长的编码方法**，字符长度从**1个字节到4个字节不等**。越是**常用的字符，字节越短**，最前面的**128个字符，只使用1个字节表示**，与**ASCII码完全相同**。
 
-| 编号范围 | 字节 |
-| :--- | :--- |
-| 0x0080 - 0x07FF | 2 |
-| 0x0800 - 0xFFFF | 3 |
-| 0x010000 - 0x10FFFF | 4 |
+<table>
+<tr>
+<td>编号范围</td>
+<td>字节</td>
+</tr>
+<tr>
+<td>0x0080 - 0x07FF</td>
+<td>2</td>
+</tr>
+<tr>
+<td>0x0800 - 0xFFFF</td>
+<td>3</td>
+</tr>
+<tr>
+<td>0x010000 - 0x10FFFF</td>
+<td>4</td>
+</tr>
+</table>
 
 由于UTF-8这种节省空间的特性，导致它成为互联网上最常见的网页编码。不过，参考[《字符编码笔记》](http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html)
 
@@ -80,7 +93,7 @@ UTF-16编码介于UTF-32与UTF-8之间，同时结合了定长和变长两种编
 
 它的编码规则很简单：基本平面的字符占用2个字节，辅助平面的字符占用4个字节。也就是说，UTF-16的编码长度要么是2个字节（U+0000到U+FFFF），要么是4个字节（U+010000到U+10FFFF）。
 
-![utf-16](../.gitbook/assets/utf-16.png)
+![utf-16](./images/utf-16.png)
 
 **于是就有一个问题，当我们遇到两个字节，怎么看出它本身是一个字符，还是需要跟其他两个字节放在一起解读？**
 
@@ -88,7 +101,7 @@ UTF-16编码介于UTF-32与UTF-8之间，同时结合了定长和变长两种编
 
 具体来说，辅助平面的字符位共有220个，也就是说，对应这些字符至少需要20个二进制位。UTF-16将这20位拆成两半，前10位映射在U+D800到U+DBFF（空间大小210），称为高位（H），后10位映射在U+DC00到U+DFFF（空间大小210），称为低位（L）。这意味着，一个辅助平面的字符，被拆成两个基本平面的字符表示。
 
-![utf-16](../.gitbook/assets/utf-16-v2.png)
+![utf-16](./images/utf-16-v2.png)
 
 所以，当我们遇到两个字节，发现它的码点在U+D800到U+DBFF之间，就可以断定，紧跟在后面的两个字节的码点，应该在U+DC00到U+DFFF之间，这四个字节必须放在一起解读。
 
@@ -96,33 +109,33 @@ UTF-16编码介于UTF-32与UTF-8之间，同时结合了定长和变长两种编
 
 Unicode码点转成UTF-16的时候，首先区分这是基本平面字符，还是辅助平面字符。如果是前者，直接将码点转为对应的十六进制形式，长度为两字节。
 
-```text
+``` unicode->utf-16
 U+597D = 0x597D
 ```
 
 如果是辅助平面字符，Unicode 3.0版给出了转码公式
 
-```text
+``` unicode->utf-16
 H = Math.floor((c-0x10000) / 0x400)+0xD800
 L = (c - 0x10000) % 0x400 + 0xDC00
 ```
 
-![si](../.gitbook/assets/utf-16-c1.png)
+![si](./images/utf-16-c1.png)
 
-以字符\(三+-\)为例，它是一个辅助平面字符，码点为U+1D306，将其转为UTF-16的计算过程如下。
+以字符(三+-)为例，它是一个辅助平面字符，码点为U+1D306，将其转为UTF-16的计算过程如下。
 
-```text
+``` unicode->utf-16
 H = Math.floor((0x1D306-0x10000)/0x400)+0xD800 = 0xD834
 L = (0x1D306-0x10000) % 0x400+0xDC00 = 0xDF06
 ```
 
-所以，字符\(三+-\)的UTF-16编码就是0xD834 DF06，长度为四个字节。
+所以，字符(三+-)的UTF-16编码就是0xD834 DF06，长度为四个字节。
 
-![si](../.gitbook/assets/utf-16-c2.png)
+![si](./images/utf-16-c2.png)
 
 ## JavaScript使用哪一种编码？
 
-![js-encoding](../.gitbook/assets/js-encoding.png)
+![js-encoding](./images/js-encoding.png)
 
 JavaScript语言采用Unicode字符集，但是只支持一种编码方法。
 
@@ -130,7 +143,7 @@ JavaScript语言采用Unicode字符集，但是只支持一种编码方法。
 
 JavaScript用的是UCS-2！
 
-![usc-2](../.gitbook/assets/js-ucs2.png)
+![usc-2](./images/js-ucs2.png)
 
 ### UCS-2编码
 
@@ -152,25 +165,25 @@ UCS的开发进度快于Unicode，1990年就公布了第一套编码方法UCS-2�
 
 1995年5月，Brendan Eich用了10天设计了JavaScript语言；10月，第一个解释引擎问世；次年11月，Netscape正式向ECMA提交语言标准（整个过程详见[《JavaScript诞生记》](http://www.ruanyifeng.com/blog/2011/06/birth_of_javascript.html)）。对比UTF-16的发布时间（1996年7月），就会明白Netscape公司那时没有其他选择，只有UCS-2一种编码方法可用！
 
-![usc-2](../.gitbook/assets/ucs-2-publish.png)
+![usc-2](./images/ucs-2-publish.png)
 
 ### JavaScript字符函数的局限
 
 由于JavaScript只能处理UCS-2编码，造成所有字符在这门语言中都是2个字节，如果是4个字节的字符，会当作两个双字节的字符处理。JavaScript的字符函数都受到这一点的影响，无法返回正确结果。
 
-![usc-2](../.gitbook/assets/javascript-encodeing.png)
+![usc-2](./images/javascript-encodeing.png)
 
-还是以字符\(三+-\)为例，它的UTF-16编码是4个字节的0xD834 DF06。问题就来了，4个字节的编码不属于UCS-2，JavaScript不认识，只会把它看作单独的两个字符U+D834和U+DF06。前面说过，这两个码点是空的，所以JavaScript会认为是两个空字符组成的字符串！
+还是以字符(三+-)为例，它的UTF-16编码是4个字节的0xD834 DF06。问题就来了，4个字节的编码不属于UCS-2，JavaScript不认识，只会把它看作单独的两个字符U+D834和U+DF06。前面说过，这两个码点是空的，所以JavaScript会认为是两个空字符组成的字符串！
 
-![usc-2](../.gitbook/assets/31.png)
+![usc-2](./images/31.png)
 
 上面代码表示，JavaScript认为字符的长度是2，取到的第一个字符是空字符，取到的第一个字符的码点是0xDB34。这些结果都不正确！
 
-![usc-2](../.gitbook/assets/31-1.png)
+![usc-2](./images/31-1.png)
 
 解决这个问题，必须对码点做一个判断，然后手动调整。下面是正确的遍历字符串的写法。
 
-```javascript
+``` js
 while (++index < length) {
   // ...
   if (charCode >= 0xD800 && charCode <= 0xDBFF) {
@@ -185,7 +198,7 @@ while (++index < length) {
 
 类似的问题存在于所有的JavaScript字符操作函数。
 
-```javascript
+``` js
 String.prototype.replace()
 String.prototype.substring()
 String.prototype.slice()
@@ -196,7 +209,7 @@ String.prototype.slice()
 
 ## ECMAScript 6
 
-![usc-2](../.gitbook/assets/es6.png)
+![usc-2](./images/es6.png)
 
 JavaScript的下一个版本ECMAScript 6（简称ES6），大幅增强了Unicode支持，基本上解决了这个问题。
 
@@ -204,7 +217,7 @@ JavaScript的下一个版本ECMAScript 6（简称ES6），大幅增强了Unicode
 
 ES6可以自动识别4字节的码点。因此，遍历字符串就简单多了。
 
-```text
+``` es6
 for (let s of string ) {
   // ...
 }
@@ -212,7 +225,7 @@ for (let s of string ) {
 
 但是，为了保持兼容，length属性还是原来的行为方式。为了得到字符串的正确长度，可以用下面的方式。
 
-```text
+``` es6
 Array.from(string).length
 ```
 
@@ -220,19 +233,19 @@ Array.from(string).length
 
 JavaScript允许直接用码点表示Unicode字符，写法是"反斜杠+u+码点"。
 
-```text
+``` es6
 '好' === '\u597D' // true
 ```
 
 但是，这种表示法对4字节的码点无效。ES6修正了这个问题，只要将码点放在大括号内，就能正确识别。
 
-![es6-unicode](../.gitbook/assets/es6-unicode.png)
+![es6-unicode](./images/es6-unicode.png)
 
 字符串处理函数
 
 ES6新增了几个专门处理4字节码点的函数。
 
-```text
+``` es6
 String.fromCodePoint()：从Unicode码点返回对应字符
 String.prototype.codePointAt()：从字符返回对应的码点
 String.prototype.at()：返回字符串给定位置的字符
@@ -242,17 +255,17 @@ String.prototype.at()：返回字符串给定位置的字符
 
 ES6提供了u修饰符，对正则表达式添加4字节码点的支持。
 
-![regular](../.gitbook/assets/exp-js.png)
+![regular](./images/exp-js.png)
 
 Unicode正规化
 
 有些字符除了字母以外，还有[附加符号](http://zh.wikipedia.org/wiki/%E9%99%84%E5%8A%A0%E7%AC%A6%E5%8F%B7)。比如，汉语拼音的Ǒ，字母上面的声调就是附加符号。对于许多欧洲语言来说，声调符号是非常重要的。
 
-![combine-sign](../.gitbook/assets/combine-sign.png)
+![combine-sign](./images/combine-sign.png)
 
 Unicode提供了两种表示方法。一种是带附加符号的单个字符，即一个码点表示一个字符，比如Ǒ的码点是U+01D1；另一种是将附加符号单独作为一个码点，与主体字符复合显示，即两个码点表示一个字符，比如Ǒ可以写成O（U+004F） + ˇ（U+030C）。
 
-```text
+``` es6
 // 方法一
 '\u01D1'
 // 'Ǒ'
@@ -260,21 +273,23 @@ Unicode提供了两种表示方法。一种是带附加符号的单个字符，�
 // 方法二
 '\u004F\u030C'
 // 'Ǒ'
+
 ```
 
 这两种表示方法，视觉和语义都完全一样，理应作为等同情况处理。但是，JavaScript无法辨别。
 
-```text
+
+``` ES6
 '\u01D1'==='\u004F\u030C'
  //false
 ```
 
 ES6提供了normalize方法，允许"Unicode正规化"，即将两种方法转为同样的序列。
 
-```text
+``` ES6
  '\u01D1'.normalize() === '\u004F\u030C'.normalize() 
  // true
-```
+ ```
 
 ## ASCII 码
 
@@ -288,7 +303,7 @@ ASCII 码一共规定了128个字符的编码，比如空格SPACE是32（二进�
 
 英语用128个符号编码就够了，但是用来表示其他语言，128个符号是不够的。比如，在法语中，字母上方有注音符号，它就无法用 ASCII 码表示。于是，一些欧洲国家就决定，利用字节中闲置的最高位编入新的符号。比如，法语中的é的编码为130（二进制10000010）。这样一来，这些欧洲国家使用的编码体系，可以表示最多256个符号。
 
-但是，这里又出现了新的问题。不同的国家有不同的字母，因此，哪怕它们都使用256个符号的编码方式，代表的字母却不一样。比如，130在法语编码中代表了é，在希伯来语编码中却代表了字母Gimel \(ג\)，在俄语编码中又会代表另一个符号。但是不管怎样，所有这些编码方式中，0--127表示的符号是一样的，不一样的只是128--255的这一段。
+但是，这里又出现了新的问题。不同的国家有不同的字母，因此，哪怕它们都使用256个符号的编码方式，代表的字母却不一样。比如，130在法语编码中代表了é，在希伯来语编码中却代表了字母Gimel (ג)，在俄语编码中又会代表另一个符号。但是不管怎样，所有这些编码方式中，0--127表示的符号是一样的，不一样的只是128--255的这一段。
 
 至于亚洲国家的文字，使用的符号就更多了，汉字就多达10万左右。一个字节只能表示256种符号，肯定是不够的，就必须使用多个字节表达一个符号。比如，简体中文常见的编码方式是 GB2312，使用两个字节表示一个汉字，所以理论上最多可以表示 256 x 256 = 65536 个符号。
 
@@ -314,11 +329,11 @@ UTF-8 的编码规则很简单，只有二条：
 
 1）对于单字节的符号，字节的第一位设为0，后面7位为这个符号的 Unicode 码。因此对于英语字母，UTF-8 编码和 ASCII 码是相同的。
 
-2）对于n字节的符号（n &gt; 1），第一个字节的前n位都设为1，第n + 1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的 Unicode 码。
+2）对于n字节的符号（n > 1），第一个字节的前n位都设为1，第n + 1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的 Unicode 码。
 
 下表总结了编码规则，字母x表示可用编码的位。
 
-```text
+``` CODE
 Unicode符号范围     |        UTF-8编码方式
 (十六进制)        |              （二进制）
 ----------------------+---------------------------------------------
@@ -356,7 +371,7 @@ Windows平台，有一个最简单的转化方法，就是使用内置的记事�
 
 上一节已经提到，UCS-2 格式可以存储 Unicode 码（码点不超过0xFFFF）。以汉字严为例，Unicode 码是4E25，需要用两个字节存储，一个字节是4E，另一个字节是25。存储的时候，4E在前，25在后，这就是 Big endian 方式；25在前，4E在后，这是 Little endian 方式。
 
-这两个古怪的名称来自英国作家斯威夫特的《格列佛游记》。在该书中，小人国里爆发了内战，战争起因是人们争论，吃鸡蛋时究竟是从大头\(Big-endian\)敲开还是从小头\(Little-endian\)敲开。为了这件事情，前后爆发了六次战争，一个皇帝送了命，另一个皇帝丢了王位。
+这两个古怪的名称来自英国作家斯威夫特的《格列佛游记》。在该书中，小人国里爆发了内战，战争起因是人们争论，吃鸡蛋时究竟是从大头(Big-endian)敲开还是从小头(Little-endian)敲开。为了这件事情，前后爆发了六次战争，一个皇帝送了命，另一个皇帝丢了王位。
 
 第一个字节在前，就是"大头方式"（Big endian），第二个字节在前就是"小头方式"（Little endian）。
 
@@ -382,7 +397,8 @@ Unicode 规范定义，每一个文件的最前面分别加入一个表示编码
 
 ## 延伸阅读
 
-* [谈谈Unicode编码](http://www.pconline.com.cn/pcedu/empolder/gj/other/0505/616631.html)
-* [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets \(No Excuses!\)](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/)
-* [RFC3629：UTF-8, a transformation format of ISO 10646](http://www.ietf.org/rfc/rfc3629.txt)
+- [谈谈Unicode编码](http://www.pconline.com.cn/pcedu/empolder/gj/other/0505/616631.html)
 
+- [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/)
+
+- [RFC3629：UTF-8, a transformation format of ISO 10646](http://www.ietf.org/rfc/rfc3629.txt)

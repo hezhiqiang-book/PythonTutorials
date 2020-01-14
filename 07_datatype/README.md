@@ -1,23 +1,24 @@
 # 数据类型
 
-* 布尔型：`bool`
-* 数值: `int`
-* 字符串: `str`
-* 元组: `tuple`
-* 列表: `list`
-* 字典: `dict`
-* 集合: `set`
-* 类类型
-* None
-* 深浅 `copy`
+- 布尔型：`bool`
+- 数值: `int`
+- 字符串: `str`
+- 元组: `tuple`
+- 列表: `list`
+- 字典: `dict`
+- 集合: `set`
+- 类类型
+- None
 
-## 布尔型 bool \(不可变类型\)
+- 深浅 `copy`
 
-* 值范围：{True, False}
+## 布尔型 bool (不可变类型)
+
+- 值范围：{True, False}
 
 True
 
-```python
+``` Python
 bool(1)
 bool(0b01))
 bool(-1.2)
@@ -27,7 +28,7 @@ bool([1])
 
 Flase
 
-```python
+``` Python
 bool(0b0)
 bool(0.0)
 bool('')
@@ -40,47 +41,48 @@ bool({})
 
 ## 数值
 
-* 整型
-  * 整型 int
-  * 长整型 long
-  * Python 3 里都是整型
-* 浮点型
+- 整型
+  - 整型 int
+  - 长整型 long
+  - Python 3 里都是整型
+- 浮点型
 
-### 整型 int \(不可变类型\)
+### 整型 int (不可变类型)
 
-* 10进制：{0,9}
-* 2进制：{0,1}
-  * 表示法：0b10
-* 8进制：{0,7}
-  * 表示法：0o10
-* 16进制：{0,f}
-  * 表示法：0xff
-* 转换2进制：
-  * 10-&gt;2 : bin\(10\)
-  * 8-&gt;2 : bin\(0o10\)
-  * 16-&gt;2 : bin\(oxff\)
-* 转换10进制：
-  * 2-&gt;10 : int\(0b111\)
-  * 8-&gt;10 : int\(0o10\)
-  * 16-&gt;10: int\(oxff\)
-* 转换8进制：
-  * 2-&gt;8 : oct\(0b111\)
-  * 8-&gt;8 : oct\(0o10\)
-  * 16-&gt;8: oct\(oxff\)
-* 转换16进制：
-  * 2-&gt;16 : hex\(0b111\)
-  * 8-&gt;16: hex\(0o10\)
-  * 16-&gt;16: hex\(oxff\)
+- 10进制：{0,9}
+- 2进制：{0,1}
+  - 表示法：0b10
+- 8进制：{0,7}
+  - 表示法：0o10
+- 16进制：{0,f}
+  - 表示法：0xff
+
+- 转换2进制：
+  - 10->2 : bin(10)
+  - 8->2 : bin(0o10)
+  - 16->2 : bin(oxff)
+- 转换10进制：
+  - 2->10 : int(0b111)
+  - 8->10 : int(0o10)
+  - 16->10: int(oxff)
+- 转换8进制：
+  - 2->8 : oct(0b111)
+  - 8->8 : oct(0o10)
+  - 16->8: oct(oxff)
+- 转换16进制：
+  - 2->16 : hex(0b111)
+  - 8->16: hex(0o10)
+  - 16->16: hex(oxff)
 
 ### int 类型方法
 
 `bit_length()` 当前数字占用二进制最少位数
 
-bin\(18\) =&gt; 0b10001 =&gt; 5 bit
+bin(18) => 0b10001 => 5 bit
 
 `__abs__()` 绝对值
 
-`abs()` 内部创建数组对象并调用**abs**\(\)数字方法
+`abs()` 内部创建数组对象并调用__abs__()数字方法
 
 `__add__(y)` 加号运算, 等于加号`+`
 
@@ -96,15 +98,16 @@ bin\(18\) =&gt; 0b10001 =&gt; 5 bit
 
 `help(10), help(int)` 帮助函数
 
-### 长整型 long \(不可变类型\), Python3 不支持
+### 长整型 long (不可变类型), Python3 不支持
 
 `203020930239`
 
 ### 复数 complex
 
-> j表示复数 `(5+4j)`
+> j表示复数
+`(5+4j)`
 
-## 浮点类型 float \(不可变类型\)
+## 浮点类型 float (不可变类型)
 
 `3.141592`
 
@@ -112,21 +115,21 @@ bin\(18\) =&gt; 0b10001 =&gt; 5 bit
 
 复数：`3+6e`
 
-## 字符串：str \(不可变类型\)
+## 字符串：str (不可变类型)
 
 ### 字符串表示法
 
-* 单引号
-* 双引号
-* 三引号
+- 单引号
+- 双引号
+- 三引号
 
 ### 字符串连接整型必须转换字符串类型
 
 `str(1)+"string"`
 
-* 字符串连接
+- 字符串连接
 
-```python
+``` Python
 str=str1+str2
 str="===%s==="%(str1+str2)
 ```
@@ -141,14 +144,14 @@ str="===%s==="%(str1+str2)
 
 ### 字符串索引
 
-```python
+``` Python
 i=str[index]
 i=str[-lastIndex]
 ```
 
 ### 字符串切片
 
-```python
+``` Python
 str=str[0:2]      # strarIndex:endIndx, [:2]
 str=str[1:3]      # startIndex:endIndex，不包括endIndex元素`
 str=str[2:]       # 第三个元素到最后一个
@@ -161,13 +164,13 @@ str=str[::-1]     # 反向取值，所有的，以步长为顺序决定开始索
 
 ### 字符串操作
 
-```python
+``` Python
 str = "hello world hello hi ho are you"
 ```
 
 ### 查找子串：find, rfind, index, rindex
 
-```python
+``` Python
 -1 | index str.find(search [, start=0, end=len(search)])
 str.find("llo")      # 2
 str.find("good")     # -1
@@ -181,13 +184,14 @@ str.index("good")    # ValueError: substring not found
 
 ### 查找子串数量：count
 
-`0 | 字符串中子串个数 str.count(search [, start=0, end=len(search)])` `0 | 字符串中子串个数 str.count("llo") # 2`
+`0 | 字符串中子串个数 str.count(search [, start=0, end=len(search)])`
+`0 | 字符串中子串个数 str.count("llo")     # 2`
 
 ### 替换字符串：replace
 
 `newstr str.replace(old, new [,str.count(old)])`
 
-`newstr str.replace("llo","good") # hegood world hegood hi ho are you`
+`newstr str.replace("llo","good")  # hegood world hegood hi ho are you`
 
 对原字符串没有影响
 
@@ -195,7 +199,7 @@ count 替换次数
 
 ### 分割字符串：split, 自动识别空白字符
 
-```python
+``` Python
 str.split(seperator[, count])
 str.split(" ")  # ['hello', 'world', 'hello', 'hi', 'ho', 'are', 'you']
 str.split(" ",2)# ['hello', 'world', 'hello hi ho are you']
@@ -205,19 +209,20 @@ str.split(" ",2)# ['hello', 'world', 'hello hi ho are you']
 
 > 以特殊字符作为分隔符作为单词边界
 
-`str.title() # Hello World Hello Hi Ho Are You`
+`str.title()    # Hello World Hello Hi Ho Are You`
 
 ### 串前缀开始、后缀结束：startswith,endswith
 
-```python
+``` Python
 str.startswith("hello")  # True
 str.startswith("ehello") # False
 str.endswith("you")      # True
 ```
 
-* 上传文件
-* 检查后缀名
-* 检查内容
+- 上传文件
+
+1. 检查后缀名
+2. 检查内容
 
 ### 单词首字母大写
 
@@ -225,7 +230,7 @@ str.endswith("you")      # True
 
 ### 大小写转换：lower,upper
 
-```python
+``` Python
 str.lower()    # hello world hello hi ho are you
 str.upper()    # HELLO WORLD HELLO HI HO ARE YOU
 ```
@@ -234,14 +239,14 @@ str.upper()    # HELLO WORLD HELLO HI HO ARE YOU
 
 `'hello\t word'.expandtabs(tabsize=20)`
 
-```python
+``` Python
 'hello\t world'.expandtabs(20)
 'hello\t world'.expandtabs(20)
 ```
 
 ### 对齐：ljust,rjust,center
 
-```text
+``` Pytohn
 s="hi"
 左对齐：str.ljust(5)  # "hi   "
 右对齐：str.rjust(5)  # "   hi"
@@ -253,7 +258,7 @@ s="hi"
 
 ### 修剪：lstrip,rstrip,strip
 
-```python
+``` Python
 s=" hi "
 左修剪：str.lstrip()
 右修剪：str.rstrip()
@@ -262,7 +267,7 @@ s=" hi "
 
 ### 分割三部分：partition,rpartition, 返回元组
 
-```python
+``` Python
 s="hello world title how title are you"
 
 s.partition("title")    # ('hello world ', 'title', ' how title are you')
@@ -276,14 +281,14 @@ s.rpartition("titles")   # ('', '', 'hello world title how title are you')
 
 ### 行切割：splitlines，返回列表
 
-```python
+``` Python
 s="hello world\n how areyou\nhi"
 s.splitlines()          # ['hello world', ' how areyou', 'hi']
 ```
 
 ### 只包含字符则返回 True 否则返回 False：isalpha
 
-```python
+``` Python
 s="123"
 s1="abc 1"
 s2="abc"
@@ -294,7 +299,7 @@ s2.isalpah()   # True
 
 ### 只包含数字则返回 True 否则返回 False： isdigit
 
-```python
+``` Python
 s="123"
 s1="12 a"
 s2="abc"
@@ -305,7 +310,7 @@ s2.isdigit()`   # False
 
 ### 合并：join
 
-```python
+``` Python
 s="="
 li=["a","b","c"]
 s.join(li)`      # a=b=c
@@ -317,7 +322,7 @@ s.join(li)`      # a=b=c
 
 ### 定义元组
 
-```python
+``` Python
 t=(3,)      # 注意：单个元素元组最后必须加逗号
 t=(11,22)
 a,b=t          # a=11,b=22
@@ -331,29 +336,30 @@ a,b=t          # a=11,b=22
 
 ### 删除：不能
 
-`t.index(ele)` `t.count(ele)`
+`t.index(ele)`
+`t.count(ele)`
 
-## list 列表 \(可变类型\)
+## list 列表 (可变类型)
 
 ### 创建列表
 
-```python
+``` Python
 li = list([1,2,3])
 li = [1,2,3]
 ```
 
 ### 添加
 
-```python
+``` Python
 li.append(ele)            # 压栈，没有返回值[null]，整体添加
 li.insert(index,ele)     # 数据类型
 li.extend(li2) == li+li2  # 整体分割成元素分别添加
-区别：li 变为 li+li2, 而 li+li2 的 li 值不变
+区别：li 变为 li+li2, 而 li+li2 的 li 值不变  
 ```
 
 ### 删除
 
-```python
+``` Python
 li.pop()         # 弹栈，delete last element
 li.remove(ele)   # 删除查找元素的第一个
 del li[index]    # 根据下标删除
@@ -376,13 +382,13 @@ li.clear()       # 清空 []
 
 `error|int li.index(ele)`
 
-### 查询：in, not in 是否\[不\]存在
+### 查询：in, not in 是否[不]存在
 
 `boolean "元素" [not] in LIST`
 
 ### max, min
 
-```python
+``` Python
 max([1,2,3,4]) # 4
 min([1,2,3,4]) # 1
 max("abcdefA") # A (ASCII 排序)
@@ -407,9 +413,9 @@ ASCII码顺序：数字,特殊字符，字母
 
 `name_list.sort(reverse=True)`
 
-### range\(\)
+### range()
 
-## 字典 dict \(可变类型\)
+## 字典 dict (可变类型)
 
 ### 创建字典
 
@@ -431,14 +437,14 @@ ASCII码顺序：数字,特殊字符，字母
 
 ### 删除元素
 
-```python
+``` Python
 d.pop('key')      # 返回值
 d.popitem()       # 删除随机元素
 ```
 
 ### 查询值
 
-```python
+``` Python
 di["key"]
 **di.get("key")**      # 没有找到返回空，None
 ```
@@ -459,7 +465,7 @@ di["key"]
 
 `di.values()`
 
-### items \(键，值\)元组的列表
+### items (键，值)元组的列表
 
 > 返回键值对
 
@@ -469,7 +475,7 @@ di["key"]
 
 ### 遍历
 
-```python
+``` Python
 ele in d.keys()
 ele in d.values()
 k,v in d.items()
@@ -477,7 +483,7 @@ k,v in d.items()
 
 ### 排序元祖
 
-```python
+``` Python
 info=[{'name':'banzhang','age':10},{'name':'fubanzhang','age':9},{'name':'xiaoming',age':20}]
 info.sort(key=lambda x:x['name'])
 > x是元素，即字典
@@ -499,7 +505,7 @@ info.sort(key=lambda x:x['name'])
 
 ## 强制类型转换
 
-```python
+``` python
 int(变量)
 
 float(变量)
@@ -527,14 +533,14 @@ set(变量)
 
 集合：可变的数据类型，元素必须是不可变的数据类型，无序，不重复
 
-```python
+``` python
 s = set([1,2,33,33,2,1,4,11,11,11])
 li = list(s)
 ```
 
 ### 查看方法
 
-```python
+``` python
 # 告诉我列表拥有的所有方法
 print(dir([]))
 
@@ -572,6 +578,7 @@ print('__iter__' in dir(range(1))) # True
 
 # 列表执行了__iter__()之后的返回值就是一个迭代器
 print([].__iter__())
+
 ```
 
 ### Counter
@@ -580,27 +587,26 @@ print([].__iter__())
 
 ### 默认字典 defaultDict
 
-### 可命名元祖\(namedtuple\)
+### 可命名元祖(namedtuple)
 
 > 创建一个包含tuple 所有功能以及其他功能的类型
 
-### 队列\(deque\)
+### 队列(deque)
 
 > Python 内置的一个线程安全的双向队列
 
-* 单向队列
-* 双向队列
+- 单向队列
+- 双向队列
 
 ## 深浅拷贝
 
-* 对于数字和字符串类型，深浅拷贝都是同一个内存地址
+- 对于数字和字符串类型，深浅拷贝都是同一个内存地址
 
 ## 可变类型不能作为字典的key
 
-```python
+```py
 a=[1,2,3]
 b={a:"test"}
 ```
 
 根据key找到对应的value，是因为通过获得的哈希值（哈希表中有对应的内存地址）找到key对应的值。同一个字典中不能相同的key，因为不能有相同的哈希值。
-
