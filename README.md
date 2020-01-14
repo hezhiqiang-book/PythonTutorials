@@ -24,7 +24,7 @@
 * [06-数据类型](06_datatype.md)
 * [07-函数](07_function.md)
 * [08-文件](08_file/)
-* 09-模块
+* [09-模块](https://hezhiqiang8909.gitbook.io/python-ai/09_module)
 * [10-字符集](10_charset.md)
 * [11-面向对象](11_oop.md)
 * [12-生成器](12_generator.md)
