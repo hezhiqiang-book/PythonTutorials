@@ -16,9 +16,9 @@
 
 ## Python 全栈
 
-* [01-Python 介绍](02_introduction_python.md)
-* [02-Python 安装](03_setup_python.md)
-* [03-变量](04_variables.md)
+* [01-Python 介绍](01_introduction_python.md)
+* [02-Python 安装](02_setup_python.md)
+* [03-变量](03_variables.md)
 * [04-运算符](05_operator.md)
 * [05-流程控制语句](06_flow_control_statement.md)
 * [06-数据类型](07_datatype.md)
