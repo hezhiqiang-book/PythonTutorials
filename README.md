@@ -23,7 +23,7 @@
 * [05-流程控制语句](05_flow_control_statement.md)
 * [06-数据类型](06_datatype.md)
 * [07-函数](07_function.md)
-* [08-文件](09_file/)
+* [08-文件](08_file/)
 * 0[9-模块](https://hezhiqiang8909.gitbook.io/python-ai/10_module)
 * [10-字符集](11_charset.md)
 * [11-面向对象](12_oop.md)
