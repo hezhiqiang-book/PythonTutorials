@@ -10,9 +10,13 @@
 
 极验：[http://jiyan.c2567.com/](http://jiyan.c2567.com/) 
 
-语音验证码平台： thewolf：[http://www.yyyzmpt.com/](http://www.yyyzmpt.com/) 
+语音验证码平台： 
 
-短信验证码平台： 神话：[http://115.28.184.182:8000/](http://115.28.184.182:8000/) 
+thewolf：[http://www.yyyzmpt.com/](http://www.yyyzmpt.com/) 
+
+短信验证码平台： 
+
+神话：[http://115.28.184.182:8000/](http://115.28.184.182:8000/) 
 
 短租：[http://121.41.61.159:8888/help.jsp](http://121.41.61.159:8888/help.jsp) 
 
