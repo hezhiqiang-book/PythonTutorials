@@ -4,7 +4,7 @@
 * [Python 介绍](01_introduction_python.md)
 * [Python 安装](02_setup_python.md)
 * [变量](03_variables.md)
-* [运算符](05_operator.md)
+* [运算符](04_operator.md)
 * [流程控制语句](06_flow_control_statement.md)
 * [数据类型](07_datatype.md)
 * [函数](08_function.md)
